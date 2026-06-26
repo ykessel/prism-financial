@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; padding: 0; margin: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #070B14;
+  color: #F1F5F9;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #0D1117; }
+::-webkit-scrollbar-thumb { background: #2D3748; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #3B82F6; }
+
+/* Selection */
+::selection { background: rgba(59,130,246,.2); color: #3B82F6; }
+
+/* Chart tooltip */
+.chart-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: #1E2535;
+  border: 1px solid #2D3748;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.6);
+  white-space: nowrap;
+  z-index: 50;
+}
+
+/* D3 axis text */
+.axis text {
+  fill: #64748B;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+.axis line, .axis path { stroke: #1E2535; }
+.grid line { stroke: #1E2535; stroke-dasharray: 2,4; }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.animate-fade-up  { animation: fadeUp .5s cubic-bezier(.2,.8,.2,1) both; }
+.animate-fade-in  { animation: fadeIn .4s ease both; }
+.skeleton {
+  background: linear-gradient(90deg, #0D1117 25%, #161B27 50%, #0D1117 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+/* Number formatting */
+.positive { color: #10B981; }
+.negative { color: #EF4444; }
+.neutral  { color: #94A3B8; }
+
+/* Chart crosshair */
+.crosshair { stroke: #3B82F6; stroke-width: 1; stroke-dasharray: 4,4; opacity: 0.6; }
